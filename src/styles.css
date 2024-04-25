@@ -5,12 +5,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Noto Sans Georgian", sans-serif;
 }
 
 body {
     width: 100vw;
     height: 100vh;
-    font-family: "Noto Sans Georgian", sans-serif;
+    /* font-family: "Noto Sans Georgian", sans-serif; */
 }
 
 .container {

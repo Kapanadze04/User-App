@@ -17,6 +17,10 @@ export class UsersComponent implements OnInit {
   pageSize: number = 10;
   pages: number[] = [];
 
+  displayedCountText: string = '';
+
+
+
   constructor(private userService: UserService) {}
   ngOnInit(): void {
     this.userService.getUsers().subscribe({
@@ -30,11 +34,36 @@ export class UsersComponent implements OnInit {
       error: (err) => console.error('Error fetching users:', err)
     });
   }
+  
+  searchUsers(searchTerm: string): void {
+    if(searchTerm.trim() === '') {
+      this.displayedUsers = this.users.slice((this.currentPage - 1) * this.pageSize, this.currentPage * this.pageSize);
+    } else {
+      this.displayedUsers = this.users
+        .slice((this.currentPage - 1) * this.pageSize, this.currentPage * this.pageSize)
+        .map(user => {
+          const firstNameMatch = user.firstName.toLowerCase().includes(searchTerm.toLowerCase());
+          const lastNameMatch = user.lastName.toLowerCase().includes(searchTerm.toLowerCase());
+          const emailMatch = user.email.toLowerCase().includes(searchTerm.toLowerCase());
+          const isMatch = firstNameMatch || lastNameMatch || emailMatch;
+        return { ...user, isMatch };
+        })
+    }
+
+    
+  }
+
+
 
   updateDisplayedUsers(): void {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.displayedUsers = this.users.slice(startIndex, endIndex);
+
+
+    const displayedCount = this.displayedUsers.length;
+    const totalCount = this.users.length;
+    this.displayedCountText = `ნაჩვენებია  ${startIndex + displayedCount} შედეგი -  ${totalCount} შედეგიდან`
   }
 
   generatePageNumbers(): void {
@@ -66,6 +95,30 @@ export class UsersComponent implements OnInit {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // export class UsersComponent implements OnInit {
 
 
@@ -85,6 +138,10 @@ export class UsersComponent implements OnInit {
 
 
 // }
+
+
+
+
 
 
 

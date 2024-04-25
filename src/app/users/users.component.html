@@ -1,5 +1,10 @@
 <div class="area">
-    <button>რედაქტირება</button>
+    <button id="editBtn">რედაქტირება</button>
+    <div class="search-wrapper">
+        <input class="search-input" type="text" placeholder="მოძებნეთ მომხმარებელი" (input)="searchUsers($event.target.value)">
+        <span class="search-icon"><img src="../../assets/img/search-icon.svg" alt="search icon"></span>
+    </div>
+   
 </div>
 
 
@@ -9,11 +14,11 @@
 
         <div class="userInfo">
             <div>
-                <span id="userFirstName">{{ user.firstName + " " }}</span>
-                <span id="userLastName">{{ user.lastName }}</span>
+                <span id="userFirstName" [style.background-color]="user.isMatch ? '#72be25' : 'transparent'">{{ user.firstName + " " }}</span>
+                <span id="userLastName" [style.background-color]="user.isMatch ? '#72be25' : 'transparent'">{{ user.lastName }}</span>
             </div>
             <div>
-                <span id="userEmail">{{ user.email }}</span>
+                <span id="userEmail" [style.background-color]="user.isMatch ? '#72be25' : 'transparent'">{{ user.email }}</span>
             </div>
         </div>
         <p>ყველაზე დიდი მომხმარებლის ჯგუფი</p>
@@ -32,19 +37,26 @@
 <div class="pagination">
 
 
+    <p class="pages-displayed">  {{displayedCountText}} </p>
+
+    <div class="btn-wrapper">
+        <button (click)="previousPage()" [disabled]="currentPage === 1"><img src="../../assets/img/arrow-left.svg" alt=""></button>
+
+
+        <button (click)="goToPage(1)">1</button>
+        <button (click)="goToPage(2)">2</button>
+        <button (click)="goToPage(3)">3</button>
+        
     
-    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-    <button (click)="goToPage(1)">1</button>
-    <button (click)="goToPage(2)">2</button>
-    <button (click)="goToPage(3)">3</button>
-    <button [disabled]="currentPage === totalPages" (click)="goToPage(4)">4</button>
+        <button *ngFor="let page of pages" (click)="goToPage(page)" [ngClass]=" { 'active-page' : currentPage === page } " >{{ page }}</button>
+    
+    
+    
+    
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages"><img src="../../assets/img/arrow-right.svg" alt=""></button>
+    </div>
+    
 
-    <button *ngFor="let page of pages" (click)="goToPage(page)" [ngClass]="{'active': currentPage === page }">{{ page }}</button>
-
-
-
-
-    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
 </div>
 
 
