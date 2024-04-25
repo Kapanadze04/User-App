@@ -1,7 +1,54 @@
-<h1>Users List</h1>
+<div class="area">
+    <button>რედაქტირება</button>
+</div>
+
 
 <ul>
-    <li *ngFor="let user of users">
-        
+    <li *ngFor="let user of displayedUsers">
+        <img id="user-img" [src]="user.image" alt="User image">
+
+        <div class="userInfo">
+            <div>
+                <span id="userFirstName">{{ user.firstName + " " }}</span>
+                <span id="userLastName">{{ user.lastName }}</span>
+            </div>
+            <div>
+                <span id="userEmail">{{ user.email }}</span>
+            </div>
+        </div>
+        <p>ყველაზე დიდი მომხმარებლის ჯგუფი</p>
     </li>
 </ul>
+
+
+
+<!-- <ul>
+    <li *ngFor="let user of displayedUsers">
+        {{ user.firstName }}
+    </li>
+</ul> -->
+
+
+<div class="pagination">
+
+
+    
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <button (click)="goToPage(1)">1</button>
+    <button (click)="goToPage(2)">2</button>
+    <button (click)="goToPage(3)">3</button>
+    <button [disabled]="currentPage === totalPages" (click)="goToPage(4)">4</button>
+
+    <button *ngFor="let page of pages" (click)="goToPage(page)" [ngClass]="{'active': currentPage === page }">{{ page }}</button>
+
+
+
+
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,109 @@
+.area {
+    padding: 16px 22px;
+}
+
+ul li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: white;
+    border: 1px solid #EFEFF4;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+ul li:hover {
+    background-color: #EFEFF4;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* background-color: red; */
+    margin-left: 22px;
+    margin-right: 22px;
+    height: 600px;
+    overflow: scroll;
+
+}
+
+#user-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 12px;
+    width: 300px;
+}
+
+#userFirstName,
+#userLastName {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -2%;
+    color: #1A1512;
+}
+
+#userEmail {
+    font-size: 12px;
+    letter-spacing: -2%;
+    font-weight: 500;
+    color: #464444;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -2%;
+    color: #1A1512;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #fff;
+  }
+  
+  .pagination button.active {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
