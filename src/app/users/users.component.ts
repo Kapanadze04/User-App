@@ -19,6 +19,7 @@ export class UsersComponent implements OnInit {
   pages: number[] = [];
 
   displayedCountText: string = '';
+  isUserSelected: boolean = false;
 
 
 
@@ -40,6 +41,16 @@ export class UsersComponent implements OnInit {
   
   goToUserDetail(userId: number): void {
     this.router.navigate(['user', userId]);
+  }
+
+  toggleUserSelection(user: any): void {
+    if(user.isSelected) {
+      user.isSelected = false;
+    } else {
+      this.users.forEach(u => u.isSelected = false);
+      user.isSelected = true;
+    } 
+    this.isUserSelected = this.users.some(u => u.isSelected);
   }
 
   searchUsers(searchTerm: string): void {
@@ -79,6 +90,10 @@ export class UsersComponent implements OnInit {
 
   goToPage(page: number):void {
     if(page >=1 && page <= this.totalPages) {
+
+      this.users.forEach(u => u.isSelected = false);
+      this.isUserSelected = false;
+
       this.currentPage = page;
       this.updateDisplayedUsers();
     }

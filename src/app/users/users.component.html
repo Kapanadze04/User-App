@@ -1,5 +1,5 @@
 <div class="area">
-    <button id="editBtn">რედაქტირება</button>
+    <button id="editBtn" [style.background-color]="isUserSelected ? '#72be25' : '#D9D9D9'" >რედაქტირება</button>
     <div class="search-wrapper">
         <input class="search-input" type="text" placeholder="მოძებნეთ მომხმარებელი" (input)="searchUsers($event.target.value)">
         <span class="search-icon"><img src="../../assets/img/search-icon.svg" alt="search icon"></span>
@@ -9,13 +9,13 @@
 
 
 <ul>
-    <li *ngFor="let user of displayedUsers" (dblclick)="goToUserDetail(user.id)">
+    <li *ngFor="let user of displayedUsers" [style.background-color]="user.isSelected ? 'yellow' : 'transparent'" (click)="toggleUserSelection(user)" (dblclick)="goToUserDetail(user.id)">
         <img id="user-img" [src]="user.image" alt="User image">
 
         <div class="userInfo">
             <div>
                 <span id="userFirstName" [style.background-color]="user.isMatch ? '#72be25' : 'transparent'">{{ user.firstName + " " }}</span>
-                <span id="userLastName" [style.background-color]="user.isMatch ? '#72be25' : 'transparent'">{{ user.lastName }}</span>
+                <span id="userLastName"  [style.background-color]="user.isMatch ? '#72be25' : 'transparent'">{{ user.lastName }}</span>
             </div>
             <div>
                 <span id="userEmail" [style.background-color]="user.isMatch ? '#72be25' : 'transparent'">{{ user.email }}</span>
