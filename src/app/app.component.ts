@@ -9,4 +9,6 @@ export class AppComponent {
   onSearch(searchTerm: string) {
     console.log('Searching for:', searchTerm);
   }
+
+  
 }
