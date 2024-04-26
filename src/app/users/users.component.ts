@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 
 
@@ -21,7 +22,9 @@ export class UsersComponent implements OnInit {
 
 
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,
+              private router: Router
+  ) {}
   ngOnInit(): void {
     this.userService.getUsers().subscribe({
       next: (response) => {
@@ -35,6 +38,10 @@ export class UsersComponent implements OnInit {
     });
   }
   
+  goToUserDetail(userId: number): void {
+    this.router.navigate(['user', userId]);
+  }
+
   searchUsers(searchTerm: string): void {
     if(searchTerm.trim() === '') {
       this.displayedUsers = this.users.slice((this.currentPage - 1) * this.pageSize, this.currentPage * this.pageSize);

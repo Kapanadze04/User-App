@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UserComponent } from './users/user/user.component';
 
 
 
@@ -19,6 +20,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HeaderComponent,
     NavbarComponent,
     UsersComponent,
+    UserComponent,
     // PageNotFoundComponent,
   ],
   imports: [

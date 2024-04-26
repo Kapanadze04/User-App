@@ -9,7 +9,7 @@
 
 
 <ul>
-    <li *ngFor="let user of displayedUsers">
+    <li *ngFor="let user of displayedUsers" (dblclick)="goToUserDetail(user.id)">
         <img id="user-img" [src]="user.image" alt="User image">
 
         <div class="userInfo">

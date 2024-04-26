@@ -1,0 +1,43 @@
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+.pageT {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 30px 22px;
+}
+
+
+
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 30px 22px;
+}
+
+p {
+    font-size: 24px;
+    color: black;
+    font-weight: 700;
+}
+
+span {
+    font-size: 20px;
+    color: blue;
+    font-weight: 500;
+}
