@@ -23,10 +23,12 @@ export class UsersComponent implements OnInit {
 
 
 
+
   constructor(private userService: UserService,
               private router: Router
   ) {}
   ngOnInit(): void {
+    
     this.userService.getUsers().subscribe({
       next: (response) => {
         console.log(response.users);
@@ -43,6 +45,13 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['user', userId]);
   }
 
+
+
+
+
+
+
+
   toggleUserSelection(user: any): void {
     if(user.isSelected) {
       user.isSelected = false;
@@ -51,24 +60,47 @@ export class UsersComponent implements OnInit {
       user.isSelected = true;
     } 
     this.isUserSelected = this.users.some(u => u.isSelected);
+
   }
 
+
+
+
+
+
+
+
+
+
   searchUsers(searchTerm: string): void {
-    if(searchTerm.trim() === '') {
+    if (searchTerm.trim() === '') {
       this.displayedUsers = this.users.slice((this.currentPage - 1) * this.pageSize, this.currentPage * this.pageSize);
     } else {
-      this.displayedUsers = this.users
-        .slice((this.currentPage - 1) * this.pageSize, this.currentPage * this.pageSize)
-        .map(user => {
-          const firstNameMatch = user.firstName.toLowerCase().includes(searchTerm.toLowerCase());
-          const lastNameMatch = user.lastName.toLowerCase().includes(searchTerm.toLowerCase());
-          const emailMatch = user.email.toLowerCase().includes(searchTerm.toLowerCase());
-          const isMatch = firstNameMatch || lastNameMatch || emailMatch;
-        return { ...user, isMatch };
-        })
+      const searchTerms = searchTerm.toLowerCase().trim().split(/\s+/);
+      const filteredUsers = this.users.filter(user =>
+        searchTerms.every(term =>
+          user.firstName.toLowerCase().includes(term) ||
+          user.lastName.toLowerCase().includes(term) ||
+          user.email.toLowerCase().includes(term)
+        )
+      );
+  
+      
+      this.totalPages = Math.ceil(filteredUsers.length / this.pageSize);
+      this.currentPage = 1; // Reset to first page when search changes
+      this.applyPagination(filteredUsers);
     }
+  }
 
-    
+
+
+  
+  applyPagination(users: any[]): void {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.displayedUsers = users.slice(startIndex, endIndex);
+  
+
   }
 
 
@@ -96,7 +128,10 @@ export class UsersComponent implements OnInit {
 
       this.currentPage = page;
       this.updateDisplayedUsers();
+      
     }
+
+    
   }
 
   nextPage(): void {
