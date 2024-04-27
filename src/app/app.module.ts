@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserComponent } from './users/user/user.component';
 import { FormsModule } from '@angular/forms';
+import { EditUserModalComponent } from './edit-user-modal/edit-user-modal.component';
 
 
 
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     UsersComponent,
     UserComponent,
+    EditUserModalComponent,
     // PageNotFoundComponent,
   ],
   imports: [

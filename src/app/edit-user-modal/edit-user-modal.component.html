@@ -1,0 +1,34 @@
+<div class="backdrop"></div>
+<div class="modal">
+    
+      <h2>მომხმარებლის რედაქტირება</h2>
+      <hr class="line">
+
+
+      <form (ngSubmit)="onSaveChanges()">
+            <div class="input-area">
+                <div>
+                    <input type="email" id="email" [(ngModel)]="userData.email" name="email" required>
+                </div>
+
+                <div class="fNlN">
+                    <input type="text" id="firstName" [(ngModel)]="userData.firstName" name="firstName" required>
+                    <input type="text" id="lastName" [(ngModel)]="userData.lastName" name="lastName" required>
+                </div>
+
+
+            </div>
+
+
+
+
+        <div class="btn-wrapper">
+            <button class="closeBtn" type="button" (click)="onCloseModal()">გაუქმება</button>
+            <button class="submitBtn" type="submit">დამატება</button>
+        </div>
+
+        
+      </form>
+</div>
+
+  

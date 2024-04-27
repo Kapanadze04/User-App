@@ -1,11 +1,21 @@
+<div  *ngIf="editingUser">
+    <app-edit-user-modal
+      [userData]="editingUser"
+      (saveChanges)="saveChanges($event)"
+      (closeModal)="closeEditModal()"
+    ></app-edit-user-modal>
+</div>
+
 <div class="area">
-    <button id="editBtn" [style.background-color]="isUserSelected ? 'green' : '#D9D9D9'" [disabled]="!isUserSelected">რედაქტირება</button>
+    <button id="editBtn" [style.background-color]="isUserSelected ? 'green' : '#D9D9D9'" [disabled]="!isUserSelected" (click)="openEditModal()">რედაქტირება</button>
     <div class="search-wrapper">
         <input  class="search-input" type="text" placeholder="მოძებნეთ მომხმარებელი" (input)="searchUsers($event.target.value)">
         <span class="search-icon"><img src="../../assets/img/search-icon.svg" alt="search icon"></span>
     </div>
    
 </div>
+
+
 
 
 <ul>

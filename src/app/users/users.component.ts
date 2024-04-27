@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
+import { EditUserModalComponent } from '../edit-user-modal/edit-user-modal.component';
 
 
 
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
   styleUrl: './users.component.css'
 })
 
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit{
+
+
   users: any[] = [];
   displayedUsers: any[] = [];
   totalPages: number = 0;
@@ -21,7 +24,35 @@ export class UsersComponent implements OnInit {
   displayedCountText: string = '';
   isUserSelected: boolean = false;
 
+  editingUser: any = null;
 
+
+
+  openEditModal(): void {
+    this.editingUser = this.displayedUsers.find(user => user.isSelected);
+  }
+  
+
+  closeEditModal(): void {
+    if(this.editingUser) {
+      this.editingUser.isSelected = false;
+    }
+    this.editingUser = null;
+    this.isUserSelected = false;
+
+  }
+
+  saveChanges(user: any): void {
+    console.log('saving changes', user);
+
+
+
+    
+
+
+    this.closeEditModal();
+    
+  }
 
 
 
