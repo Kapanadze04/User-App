@@ -84,6 +84,7 @@ ul li {
     border: 1px solid #EFEFF4;
     border-radius: 10px;
     cursor: pointer;
+    user-select: none;
 }
 
 ul li:hover {
@@ -180,6 +181,7 @@ p {
   }
 
   .btn-wrapper > button {
+    all: unset;
     padding: 5px 10px;
     font-size: 14px;
     font-weight: 600;
@@ -195,4 +197,10 @@ p {
   .pagination button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  .pagination button.active {
+    background-color: #C73734;
+    color: white;
+    border: none;
   }

@@ -30,10 +30,14 @@ li:before {
     display: block;
     width: 24px; /* Square width */
     height: 24px; /* Square height */
-    background-color: #b1b1b1; /* Color of the square */
+    background-color: #b1b1b1; 
     position: absolute;
     left: 0;
     top: 0;
+}
+
+li.active:before {
+    background-color: black;
 }
 
 

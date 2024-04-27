@@ -24,6 +24,7 @@ export class UsersComponent implements OnInit {
 
 
 
+
   constructor(private userService: UserService,
               private router: Router
   ) {}
@@ -40,6 +41,8 @@ export class UsersComponent implements OnInit {
       error: (err) => console.error('Error fetching users:', err)
     });
   }
+
+
   
   goToUserDetail(userId: number): void {
     this.router.navigate(['user', userId]);
@@ -104,7 +107,9 @@ export class UsersComponent implements OnInit {
 
   }
 
-
+  isActivePage(page: number): boolean {
+    return this.currentPage === page;
+  }
 
   updateDisplayedUsers(): void {
     const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -149,6 +154,8 @@ export class UsersComponent implements OnInit {
     }
   }
 }
+
+
 
 
 
