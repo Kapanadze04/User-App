@@ -68,16 +68,19 @@ export class UsersComponent implements OnInit {
 
 
 
-
-
+  
 
 
   searchUsers(searchTerm: string): void {
     if (searchTerm.trim() === '') {
-      this.displayedUsers = this.users.slice((this.currentPage - 1) * this.pageSize, this.currentPage * this.pageSize);
+      this.updateDisplayedUsers();
     } else {
       const searchTerms = searchTerm.toLowerCase().trim().split(/\s+/);
-      const filteredUsers = this.users.filter(user =>
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      const usersOnCurrentPage = this.users.slice(startIndex, endIndex);
+
+      const filteredUsers = usersOnCurrentPage.filter(user =>
         searchTerms.every(term =>
           user.firstName.toLowerCase().includes(term) ||
           user.lastName.toLowerCase().includes(term) ||
@@ -86,9 +89,7 @@ export class UsersComponent implements OnInit {
       );
   
       
-      this.totalPages = Math.ceil(filteredUsers.length / this.pageSize);
-      this.currentPage = 1; // Reset to first page when search changes
-      this.applyPagination(filteredUsers);
+      this.displayedUsers = filteredUsers;
     }
   }
 
