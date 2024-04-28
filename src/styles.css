@@ -18,6 +18,12 @@ body {
 
 .flex { display: flex; }
 
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .flexBetween {
     display: flex;
     align-items: center;

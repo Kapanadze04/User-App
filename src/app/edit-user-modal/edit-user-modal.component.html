@@ -1,29 +1,68 @@
 <div class="backdrop"></div>
 
 <div class="modal">
+    <div class="flexBetween">
+        <h2>მომხმარებლის რედაქტირება</h2>
+        <img (click)="onCloseModal()" class="closeX" src="../../assets/img/iconX.svg" alt="">
+    </div>
     
-    <h2>მომხმარებლის რედაქტირება</h2>
     <hr class="line">
     
-    
-    <form (ngSubmit)="onSaveChanges()">
+
+    <form *ngIf="!actionCompleted" #editForm="ngForm" (ngSubmit)="onSaveChanges()">
         <div class="input-area flexColumn">
             <div>
-                <input type="email" id="email" [(ngModel)]="editableUserData.email" name="email" required>
+                <input 
+                    type="email" 
+                    id="email" 
+                    [(ngModel)]="editableUserData.email" 
+                    name="email" 
+                    required 
+                    (ngModelChange)="checkIfFormEdited()"
+                    >
             </div>
             
             <div class="username flexBetween">
-                <input type="text" id="firstName" [(ngModel)]="editableUserData.firstName" name="firstName" required>
-                <input type="text" id="lastName" [(ngModel)]="editableUserData.lastName" name="lastName" required>
+                <input 
+                    type="text" 
+                    id="firstName" 
+                    [(ngModel)]="editableUserData.firstName" 
+                    name="firstName" 
+                    required 
+                    (ngModelChange)="checkIfFormEdited()"
+                    >
+                <input 
+                    type="text" 
+                    id="lastName" 
+                    [(ngModel)]="editableUserData.lastName" 
+                    name="lastName"  
+                    required (ngModelChange)="checkIfFormEdited()"
+                    >
             </div>
         </div>
         
         <div class="btn-wrapper alignCenter">
             <button class="closeBtn" type="button" (click)="onCloseModal()">გაუქმება</button>
-            <button class="submitBtn" type="submit">დამატება</button>
+            <button 
+                class="submitBtn" 
+                type="submit" 
+                [class.invalid]="isFormInvalid()" 
+                [disabled]="isFormInvalid()"
+                >დამატება</button>
         </div>
-    </form>
 
+
+    </form>
+    <div class="action-container flexCenter" *ngIf="actionCompleted">
+        
+            <div class="action-icon flexCenter">
+                <img src="../../assets/img/action-icon.svg" alt="Action Icon">
+            </div>
+            
+            <span>მოქმედება წარმატებით შესრულდა</span>
+            
+            <button (click)="onCloseModal()">დახურვა</button>
+    </div>
 
 </div>
 

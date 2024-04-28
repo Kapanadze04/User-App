@@ -27,6 +27,8 @@ h2 {
     color: #1A1512;
 }
 
+.closeX { cursor: pointer; }
+
 .line {
     border: 1px solid #EFEFF4;
     margin: 20px 0 20px 0;
@@ -68,12 +70,68 @@ form button {
     background: gainsboro;
 }
 
-.submitBtn {
+.submitBtn:disabled {
+    color: white;
+    background: #b84f4f;
+    cursor: not-allowed;
+}
+
+.submitBtn:disabled::after {
+    content: "შეცვალეთ სამივე ველი";
+    position: absolute;
+    transform: translate(-60%, 100%);
+    background-color: #141414;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.submitBtn:disabled:hover::after {
+    opacity: 1;
+}
+
+.submitBtn:enabled {
     color: white;
     background: #2B7CD3;
+    cursor: pointer;
 }
 
 .btn-wrapper { gap: 18px; }
 
+
+.action-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #14C646;
+}
+
+.action-container {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.action-container > span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1A1512;
+}
+
+.action-container > button {
+    all: unset;
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+    background-color: rgb(180, 180, 180);
+    padding: 14px 85px;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
 

@@ -57,9 +57,9 @@
 
         <button (click)="previousPage()" [disabled]="currentPage === 1"><img src="../../assets/img/arrow-left.svg" alt=""></button>
 
-        <button (click)="paginate(1)" [ngClass]=" { 'active': isActivePage(1) } ">1</button>
-        <button (click)="paginate(2)" [ngClass]=" { 'active': isActivePage(2) } ">2</button>
-        <button (click)="paginate(3)" [ngClass]=" { 'active': isActivePage(3) } ">3</button>
+        <button (click)="paginate(1)" [ngClass]=" { 'active': isActivePage(1) }" >1</button>
+        <button (click)="paginate(2)" [ngClass]=" { 'active': isActivePage(2) }" >2</button>
+        <button (click)="paginate(3)" [ngClass]=" { 'active': isActivePage(3) }" >3</button>
 
         <button (click)="nextPage()" [disabled]="currentPage === totalPages"><img src="../../assets/img/arrow-right.svg" alt=""></button>
         <button *ngFor="let page of pages" (click)="goToPage(page)" >{{ page }}</button>
@@ -72,3 +72,5 @@
 
 
 
+        
+    

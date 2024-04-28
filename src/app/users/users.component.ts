@@ -55,7 +55,7 @@ export class UsersComponent implements OnInit{
     if(originalUser) {
       Object.assign(originalUser, updateUser);
     }
-    this.closeEditModal();
+    // this.closeEditModal();
   }
   
   goToUserDetail(userId: number): void {
