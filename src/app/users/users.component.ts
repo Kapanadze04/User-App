@@ -29,21 +29,29 @@ export class UsersComponent implements OnInit{
 
 
   openEditModal(): void {
-    this.editingUser = this.displayedUsers.find(user => user.isSelected);
+    const selectedUser = this.displayedUsers.find(user => user.isSelected);
+    if(selectedUser) {
+      this.editingUser = JSON.parse(JSON.stringify(selectedUser))
+    }
   }
   
 
   closeEditModal(): void {
-    if(this.editingUser) {
-      this.editingUser.isSelected = false;
-    }
+
+    this.users.forEach(users => users.isSelected = false);
     this.editingUser = null;
     this.isUserSelected = false;
 
   }
 
-  saveChanges(user: any): void {
-    console.log('saving changes', user);
+  saveChanges(updateUser: any): void {
+
+
+    let originalUser = this.users.find(u => u.id === updateUser.id);
+
+    if(originalUser) {
+      Object.assign(originalUser, updateUser);
+    }
 
 
 
@@ -67,7 +75,7 @@ export class UsersComponent implements OnInit{
         this.users = response.users;
         this.totalPages = Math.ceil(this.users.length / this.pageSize);
         this.updateDisplayedUsers();
-        // this.generatePageNumbers();
+
       },
       error: (err) => console.error('Error fetching users:', err)
     });
@@ -80,7 +88,17 @@ export class UsersComponent implements OnInit{
   }
 
 
+  updateUserData(updateUser: any) :void {
+    const index = this.users.findIndex(user => user.id === updateUser.id);
 
+    if(index !== -1) {
+      this.users[index] = updateUser;
+    }
+  }
+
+  onUserUpdated(updatedUser: any): void {
+    this.updateUserData(updatedUser);
+  }
 
 
 

@@ -8,12 +8,12 @@
       <form (ngSubmit)="onSaveChanges()">
             <div class="input-area">
                 <div>
-                    <input type="email" id="email" [(ngModel)]="userData.email" name="email" required>
+                    <input type="email" id="email" [(ngModel)]="editableUserData.email" name="email" required>
                 </div>
 
                 <div class="fNlN">
-                    <input type="text" id="firstName" [(ngModel)]="userData.firstName" name="firstName" required>
-                    <input type="text" id="lastName" [(ngModel)]="userData.lastName" name="lastName" required>
+                    <input type="text" id="firstName" [(ngModel)]="editableUserData.firstName" name="firstName" required>
+                    <input type="text" id="lastName" [(ngModel)]="editableUserData.lastName" name="lastName" required>
                 </div>
 
 
