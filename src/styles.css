@@ -11,12 +11,28 @@
 body {
     width: 100vw;
     height: 100vh;
-    /* font-family: "Noto Sans Georgian", sans-serif; */
 }
 
 
 /* General classes */
+
 .flex { display: flex; }
+
+.flexBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.alignCenter {
+    display: flex;
+    align-items: center;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
 
 
 

@@ -1,16 +1,7 @@
-section {
-    display: flex;
-    flex-direction: column;
-}
-
 .pageT {
-    display: flex;
-    align-items: center;
     gap: 24px;
     padding: 30px 22px;
 }
-
-
 
 h3 {
     font-size: 20px;
@@ -24,8 +15,6 @@ button {
 }
 
 .user-info {
-    display: flex;
-    flex-direction: column;
     gap: 16px;
     padding: 30px 22px;
 }

@@ -1,39 +1,4 @@
-.area {
-    padding: 16px 22px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.search-wrapper {
-    position: relative;
-    display: inline-block;
-    width: 300px;
-}
-
-.search-input {
-    padding: 13px 24px 13px 24px;
-    border: 1px solid #EFEFF4;
-    background: #F9F9FB;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 500;
-    color: black;
-    width: 100%;
-    border-radius: 10px;
-    outline: none;
-    
-}
-
-.search-icon {
-    position: absolute;
-    top: 30%;
-    left: 16px;
-    transform: translate(-50%);
-    color: #aaa;
-}
-
-
+.area { padding: 16px 22px; }
 
 #editBtn {
     all: unset;
@@ -47,7 +12,6 @@
     opacity: 0.5;
     position: relative;
 }
-
 
 #editBtn:enabled {
     cursor: pointer;
@@ -74,10 +38,36 @@
     opacity: 1;
 }
 
+
+.search-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+}
+
+.search-input {
+    padding: 13px 24px 13px 24px;
+    border: 1px solid #EFEFF4;
+    background: #F9F9FB;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: black;
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    top: 30%;
+    left: 16px;
+    transform: translate(-50%);
+    color: #aaa;
+}
+
 ul li {
     list-style-type: none;
-    display: flex;
-    align-items: center;
     width: 100%;
     padding: 15px 20px;
     background-color: white;
@@ -87,15 +77,8 @@ ul li {
     user-select: none;
 }
 
-ul li:hover {
-    background-color: #f6f6fc;
-}
-
 ul {
-    display: flex;
-    flex-direction: column;
     gap: 8px;
-    /* background-color: red; */
     margin-left: 22px;
     margin-right: 22px;
     height: 600px;
@@ -111,8 +94,6 @@ ul {
 }
 
 .userInfo {
-    display: flex;
-    flex-direction: column;
     text-align: left;
     margin-left: 12px;
     width: 300px;
@@ -138,15 +119,11 @@ p {
 }
 
 
-
-
-
-
-
-
-
-
-
+.pagination {
+    margin-left: 22px;
+    margin-right: 22px;
+    margin-top: 20px;
+}
 
 .pages-displayed {
     font-size: 12px;
@@ -154,33 +131,9 @@ p {
     color: #1A1512;
 }
 
+.btn-wrapper { gap: 8px; }
 
-
-
-
-
-
-
- .pagination {
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 22px;
-    margin-right: 22px;
-
-
-
-    margin-top: 20px;
-  }
-
-  .btn-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .btn-wrapper > button {
+.btn-wrapper > button {
     all: unset;
     padding: 5px 10px;
     font-size: 14px;
@@ -190,17 +143,15 @@ p {
     border: 1px solid #ccc;
     border-radius: 6px;
     cursor: pointer;
-  }
+}
 
-
-  
-  .pagination button:disabled {
+.pagination button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-  }
+}
 
-  .pagination button.active {
+.pagination button.active {
     background-color: #C73734;
     color: white;
     border: none;
-  }
+}

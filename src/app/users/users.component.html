@@ -6,27 +6,39 @@
     ></app-edit-user-modal>
 </div>
 
-<div class="area">
-    <button id="editBtn" [style.background-color]="isUserSelected ? 'green' : '#D9D9D9'" [disabled]="!isUserSelected" (click)="openEditModal()">რედაქტირება</button>
+
+<div class="area flexBetween">
+    <button 
+        id="editBtn" [style.background-color]="isUserSelected ? 'green' : '#D9D9D9'" 
+        [disabled]="!isUserSelected" 
+        (click)="openEditModal()">
+        რედაქტირება</button>
+
     <div class="search-wrapper">
         <input  class="search-input" type="text" placeholder="მოძებნეთ მომხმარებელი" (input)="searchUsers($event.target.value)">
         <span class="search-icon"><img src="../../assets/img/search-icon.svg" alt="search icon"></span>
     </div>
-   
 </div>
 
 
 
+<ul class="flexColumn">
+    <li 
+        class="alignCenter"
+        *ngFor="let user of displayedUsers" 
+        [style.background-color]="user.isSelected ? '#F0F8FF' : 'transparent'" 
+        (click)="toggleUserSelection(user)" 
+        (dblclick)="goToUserDetail(user.id)"
+        >
 
-<ul>
-    <li *ngFor="let user of displayedUsers" [style.background-color]="user.isSelected ? '#F0F8FF' : 'transparent'" (click)="toggleUserSelection(user)" (dblclick)="goToUserDetail(user.id)">
         <img id="user-img" [src]="user.image" alt="User image">
 
-        <div class="userInfo">
+        <div class="userInfo flexColumn">
             <div>
                 <span id="userFirstName">{{ user.firstName + " " }}</span>
                 <span id="userLastName">{{ user.lastName }}</span>
             </div>
+
             <div>
                 <span id="userEmail">{{ user.email }}</span>
             </div>
@@ -37,32 +49,22 @@
 
 
 
-
-
-
-<div class="pagination">
-
-
+<div class="pagination flexBetween">
+    
     <p class="pages-displayed">  {{displayedCountText}} </p>
 
-    <div class="btn-wrapper">
+    <div class="btn-wrapper alignCenter">
+
         <button (click)="previousPage()" [disabled]="currentPage === 1"><img src="../../assets/img/arrow-left.svg" alt=""></button>
 
+        <button (click)="paginate(1)" [ngClass]=" { 'active': isActivePage(1) } ">1</button>
+        <button (click)="paginate(2)" [ngClass]=" { 'active': isActivePage(2) } ">2</button>
+        <button (click)="paginate(3)" [ngClass]=" { 'active': isActivePage(3) } ">3</button>
 
-        <button (click)="goToPage(1)" [ngClass]=" { 'active': isActivePage(1) } ">1</button>
-        <button (click)="goToPage(2)" [ngClass]=" { 'active': isActivePage(2) } ">2</button>
-        <button (click)="goToPage(3)" [ngClass]=" { 'active': isActivePage(3) } ">3</button>
-        
-    
-        <button *ngFor="let page of pages" (click)="goToPage(page)" >{{ page }}</button>
-    
-    
-    
-    
         <button (click)="nextPage()" [disabled]="currentPage === totalPages"><img src="../../assets/img/arrow-right.svg" alt=""></button>
+        <button *ngFor="let page of pages" (click)="goToPage(page)" >{{ page }}</button>
+        
     </div>
-    
-
 </div>
 
 

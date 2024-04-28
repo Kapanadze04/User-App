@@ -4,7 +4,6 @@ section {
     height: 100%;
 }
 
-
 .logo {
     margin-left: 48px;
     margin-bottom: 64px;
@@ -13,24 +12,25 @@ section {
 ul {
     list-style-type: none;
     padding: 0;
-    display: flex;
-    flex-direction: column;
     gap: 32px;
     margin-left: 32px;
     cursor: pointer;
 }
+
 li {
-    padding-left: 30px; /* Space for the square marker */
     position: relative;
-    line-height: 24px; /* Set line height to match square size */
+    padding-left: 30px; 
+    line-height: 24px; 
     display: flex;
 }
+
 li:before {
     content: "";
     display: block;
-    width: 24px; /* Square width */
-    height: 24px; /* Square height */
+    width: 24px; 
+    height: 24px; 
     background-color: #b1b1b1; 
+
     position: absolute;
     left: 0;
     top: 0;
@@ -45,7 +45,6 @@ a {
     text-decoration: none; 
     font-size: 12px;
     font-weight: 500;
-    /* letter-spacing: -2%; */
-    /* line-height: 16.32px; */
+    
     color: #807f7f;
 }

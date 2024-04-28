@@ -5,13 +5,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UsersComponent } from './users/users.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserComponent } from './users/user/user.component';
-import { FormsModule } from '@angular/forms';
 import { EditUserModalComponent } from './edit-user-modal/edit-user-modal.component';
 
+
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +24,6 @@ import { EditUserModalComponent } from './edit-user-modal/edit-user-modal.compon
     UsersComponent,
     UserComponent,
     EditUserModalComponent,
-    // PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

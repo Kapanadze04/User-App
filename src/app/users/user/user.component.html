@@ -1,13 +1,13 @@
 <div *ngIf="user">
-    <section>
-        <div class="pageT">
+    <section class="flexColumn">
+        <div class="pageT alignCenter">
             <button routerLink="/users">
                 <img src="../../../assets/img/leftBtn-arrow.svg" alt="">
             </button>
             <h3>მომხმარებლის ინფორმაცია</h3>
         </div>
     
-        <div class="user-info">
+        <div class="user-info flexColumn">
             <p>Firstname:<span> {{ user.firstName }} </span></p> 
             <p>Lastname:<span> {{ user.lastName }} </span></p>
             <p>Age:<span> {{ user.age }} </span></p>

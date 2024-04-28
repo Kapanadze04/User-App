@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Router, RouterModule, Routes } from "@angular/router";
-import { HeaderComponent } from "./header/header.component";
+import { RouterModule, Routes } from "@angular/router";
 import { UsersComponent } from "./users/users.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { UserComponent } from "./users/user/user.component";
