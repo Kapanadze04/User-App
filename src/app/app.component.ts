@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  onSearch(searchTerm: string) {
-    console.log('Searching for:', searchTerm);
-  }
+  // onSearch(searchTerm: string) {
+  //   console.log('Searching for:', searchTerm);
+  // }
 
   
 }

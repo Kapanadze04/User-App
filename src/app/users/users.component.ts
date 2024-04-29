@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
-// import { PaginationService } from './pagination.service';
+
 
 
 @Component({
@@ -26,15 +26,34 @@ export class UsersComponent implements OnInit{
 
 
   ngOnInit(): void {
+
+
     this.userService.getUsers().subscribe({
       next: (response) => {
         this.users = response.users;
+  
+        // Load edited users from localStorage
+        const editedUsers = JSON.parse(localStorage.getItem('editedUsers') || '[]');
+        editedUsers.forEach(editedUser => {
+          const index = this.users.findIndex(u => u.id === editedUser.id);
+          if (index !== -1) {
+            Object.assign(this.users[index], editedUser);
+          }
+        });
+  
         this.totalPages = Math.ceil(this.users.length / this.pageSize);
         this.updateDisplayedUsers();
       },
       error: (err) => console.error('Error fetching users:', err)
     });
+
+
+
+
+
   }
+
+
   
   openEditModal(): void {
     const selectedUser = this.displayedUsers.find(user => user.isSelected);
@@ -49,13 +68,33 @@ export class UsersComponent implements OnInit{
     this.isUserSelected = false;
   }
   
-  saveChanges(updateUser: any): void {
-    let originalUser = this.users.find(u => u.id === updateUser.id);
+  saveChanges(updatedUser: any): void {
+    let editedUsers = JSON.parse(localStorage.getItem('editedUsers') || '[]');
+    let originalUser = this.users.find(u => u.id === updatedUser.id);
     
+
     if(originalUser) {
-      Object.assign(originalUser, updateUser);
+      this.userService.updateUser(updatedUser).subscribe({
+        next: (response) => {
+          Object.assign(originalUser, response);
+          const index = editedUsers.findIndex(u => u.id === updatedUser.id);
+
+          if(index !== -1) {
+            editedUsers[index] = response;
+          } else {
+            editedUsers.push(response);
+          }
+
+          localStorage.setItem('editedUsers', JSON.stringify(editedUsers));
+          console.log('User updated successfully:', response);
+
+          this.users = [...this.users];
+        },
+        error: (err) => console.log('Error updating user:', err)
+      })
     }
-    // this.closeEditModal();
+
+   
   }
   
   goToUserDetail(userId: number): void {

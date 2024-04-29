@@ -31,7 +31,7 @@ button {
     border-radius: 8px;
     font-size: 12px;
     font-weight: 600;
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 button,
