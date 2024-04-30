@@ -1,3 +1,4 @@
+// User Component
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
@@ -16,9 +17,24 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const userId = +params['id'];
+      this.fetchUser(userId);
+    })
+  }
+
+  fetchUser(userId: number): void {
+    const editedUsers = JSON.parse(localStorage.getItem('editedUsers') || '[]');
+    const localUser = editedUsers.find(u => u.id === userId);
+
+    if(localUser) {
+      this.user = localUser;
+    } else {
       this.userService.getUserById(userId).subscribe(user => {
         this.user = user;
-      })
-    })
+      },
+      error => {
+        console.log('Error fetching user:', error);
+      }
+    )
+    }
   }
 }

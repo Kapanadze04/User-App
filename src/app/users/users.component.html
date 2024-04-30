@@ -1,3 +1,4 @@
+<!-- Users component -->
 <div  *ngIf="editingUser">
     <app-edit-user-modal
       [userData]="editingUser"
@@ -9,14 +10,23 @@
 
 <div class="area flexBetween">
     <button 
-        id="editBtn" [style.background-color]="isUserSelected ? 'green' : '#D9D9D9'" 
+        id="editBtn" 
+        [style.background-color]="isUserSelected ? 'green' : '#D9D9D9'" 
         [disabled]="!isUserSelected" 
-        (click)="openEditModal()">
+        (click)="openEditModal()"
+        >
         რედაქტირება</button>
 
     <div class="search-wrapper">
-        <input  class="search-input" type="text" placeholder="მოძებნეთ მომხმარებელი" (input)="searchUsers($event.target.value)">
-        <span class="search-icon"><img src="../../assets/img/search-icon.svg" alt="search icon"></span>
+        <input  
+            class="search-input" 
+            type="text" 
+            placeholder="მოძებნეთ მომხმარებელი" 
+            (input)="searchUsers($event.target.value)"
+        />
+        <span class="search-icon">
+            <img src="../../assets/images/search-icon.svg" alt="search icon">
+        </span>
     </div>
 </div>
 
@@ -54,15 +64,39 @@
     <p class="pages-displayed">  {{displayedCountText}} </p>
 
     <div class="btn-wrapper alignCenter">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">
+            <img src="../../assets/images/arrow-left.svg" alt="arrow left">
+        </button>
 
-        <button (click)="previousPage()" [disabled]="currentPage === 1"><img src="../../assets/img/arrow-left.svg" alt=""></button>
+        <button 
+            (click)="paginate(1)" 
+            [ngClass]=" { 'active': isActivePage(1) }" >
 
-        <button (click)="paginate(1)" [ngClass]=" { 'active': isActivePage(1) }" >1</button>
-        <button (click)="paginate(2)" [ngClass]=" { 'active': isActivePage(2) }" >2</button>
-        <button (click)="paginate(3)" [ngClass]=" { 'active': isActivePage(3) }" >3</button>
+            1
+        </button>
 
-        <button (click)="nextPage()" [disabled]="currentPage === totalPages"><img src="../../assets/img/arrow-right.svg" alt=""></button>
-        <button *ngFor="let page of pages" (click)="goToPage(page)" >{{ page }}</button>
+        <button 
+            (click)="paginate(2)" 
+            [ngClass]=" { 'active': isActivePage(2) }" >
+            2
+        </button>
+
+        <button 
+            (click)="paginate(3)" 
+            [ngClass]=" { 'active': isActivePage(3) }" >
+            3
+        </button>
+
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+            <img src="../../assets/images/arrow-right.svg" alt="arrow right">
+        </button>
+
+        <button 
+            *ngFor="let page of pages" 
+            (click)="goToPage(page)" >
+
+            {{ page }}
+        </button>
         
     </div>
 </div>

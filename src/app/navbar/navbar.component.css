@@ -36,9 +36,7 @@ li:before {
     top: 0;
 }
 
-li.active:before {
-    background-color: black;
-}
+li.active:before { background-color: black; }
 
 
 a { 

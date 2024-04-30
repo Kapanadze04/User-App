@@ -10,29 +10,26 @@ import { Component, EventEmitter, Input, Output,  } from '@angular/core';
 
 export class EditUserModalComponent   {
 
-  // EventEmitter for saving changes and closing modal
+ 
   @Output() saveChanges = new EventEmitter<any>();
   @Output() closeModal = new EventEmitter<void>();
 
 
-  // Variables to store original and editable user data
+  
   originalUserData: any;
   editableUserData: any;
-
   isFormEdited: boolean = false;
   actionCompleted: boolean = false;
 
-  // To set user data and create a deep copy for editing
+  
   @Input() set userData(value: any) {
     this.originalUserData = value;
-    // this.editableUserData = JSON.parse(JSON.stringify(value))
     this.editableUserData = { ...value }
   }
   
   
   onSaveChanges(): void {
     this.saveChanges.emit(this.editableUserData);
-    // this.closeModal.emit();
     this.actionCompleted = true;
   }
   

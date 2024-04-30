@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 
@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit{
       next: (response) => {
         this.users = response.users;
   
-        // Load edited users from localStorage
+        
         const editedUsers = JSON.parse(localStorage.getItem('editedUsers') || '[]');
         editedUsers.forEach(editedUser => {
           const index = this.users.findIndex(u => u.id === editedUser.id);
@@ -131,6 +131,7 @@ export class UsersComponent implements OnInit{
       
       this.displayedUsers = filteredUsers;
     }
+
   }
 
   isActivePage(page: number): boolean {
