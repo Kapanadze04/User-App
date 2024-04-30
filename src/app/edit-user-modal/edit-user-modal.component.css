@@ -1,5 +1,7 @@
+.modal,
+.backdrop { position: fixed; }
+
 .modal {
-    position: fixed;
     top: 85px;
     left: 50%;
     transform: translate(-50%);
@@ -12,7 +14,6 @@
 }
 
 .backdrop {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -90,9 +91,7 @@ form button {
     transition: opacity 0.2s ease;
 }
 
-.submitBtn:disabled:hover::after {
-    opacity: 1;
-}
+.submitBtn:disabled:hover::after { opacity: 1; }
 
 .submitBtn:enabled {
     color: white;

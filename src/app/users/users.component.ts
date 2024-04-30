@@ -26,8 +26,7 @@ export class UsersComponent implements OnInit{
 
 
   ngOnInit(): void {
-
-
+    
     this.userService.getUsers().subscribe({
       next: (response) => {
         this.users = response.users;
@@ -46,15 +45,10 @@ export class UsersComponent implements OnInit{
       },
       error: (err) => console.error('Error fetching users:', err)
     });
-
-
-
-
-
   }
 
 
-  
+    // Open  modal with selected user's data
   openEditModal(): void {
     const selectedUser = this.displayedUsers.find(user => user.isSelected);
     if(selectedUser) {
@@ -62,17 +56,20 @@ export class UsersComponent implements OnInit{
     }
   }
   
+  // Close modal and reset user selection
   closeEditModal(): void {
     this.users.forEach(users => users.isSelected = false);
     this.editingUser = null;
     this.isUserSelected = false;
   }
   
+
+  // Save changes made to a user
   saveChanges(updatedUser: any): void {
     let editedUsers = JSON.parse(localStorage.getItem('editedUsers') || '[]');
     let originalUser = this.users.find(u => u.id === updatedUser.id);
     
-
+    // update user on the server and in localstorage
     if(originalUser) {
       this.userService.updateUser(updatedUser).subscribe({
         next: (response) => {
@@ -93,10 +90,10 @@ export class UsersComponent implements OnInit{
         error: (err) => console.log('Error updating user:', err)
       })
     }
-
-   
   }
   
+
+  // Navigate to user detail page
   goToUserDetail(userId: number): void {
     this.router.navigate(['user', userId]);
   }
@@ -111,6 +108,10 @@ export class UsersComponent implements OnInit{
     this.isUserSelected = this.users.some(u => u.isSelected);
   }
 
+
+
+
+  // search users based on search term
   searchUsers(searchTerm: string): void {
     if (searchTerm.trim() === '') {
       this.updateDisplayedUsers();
@@ -127,17 +128,16 @@ export class UsersComponent implements OnInit{
           user.email.toLowerCase().includes(term)
         )
       );
-  
-      
       this.displayedUsers = filteredUsers;
-    }
+    }}
 
-  }
-
+  // check if a page is active
   isActivePage(page: number): boolean {
     return this.currentPage === page;
   }
 
+
+  // update displayed users on current page
   updateDisplayedUsers(): void {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
@@ -149,6 +149,7 @@ export class UsersComponent implements OnInit{
     this.displayedCountText = `ნაჩვენებია  ${startIndex + displayedCount} შედეგი -  ${totalCount} შედეგიდან`
   }
 
+  // change page
   paginate(page: number):void {
     if(page >=1 && page <= this.totalPages) {
 

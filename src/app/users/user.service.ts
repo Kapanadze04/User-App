@@ -1,4 +1,3 @@
-// User service
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -7,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-
+  
   private apiUrl = 'https://dummyjson.com/users';
 
   constructor(private http: HttpClient) { }
