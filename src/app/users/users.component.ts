@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
+import { User } from './user.interface';
 
 
 
@@ -11,15 +12,15 @@ import { Router } from '@angular/router';
 })
 
 export class UsersComponent implements OnInit{
-  users: any[] = [];
-  displayedUsers: any[] = [];
+  users: User[] = [];
+  displayedUsers: User[] = [];
   totalPages: number = 0;
   currentPage: number = 1;
   pageSize: number = 10;
   pages: number[] = [];
   displayedCountText: string = '';
   isUserSelected: boolean = false;
-  editingUser: any = null;
+  editingUser: User | null = null;
 
 
   constructor(private userService: UserService, private router: Router) {}
